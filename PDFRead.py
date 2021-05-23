@@ -20,7 +20,8 @@ def openSpreadSheet(pathSS):
 #in the PDF.
 def sortProcess(n):
     pdf_writer =  PdfFileWriter()
-##    pdf = PdfFileReader(pathPDF)
+    #Unsure if the below line is necessary, but without it and
+    #pdfFileObj.close(), ran into memory errors
     pdfFileObj = open(pathPDF, 'rb')
     pdf = PdfFileReader(pdfFileObj)
     
@@ -47,43 +48,3 @@ if __name__=='__main__':
     while n < length_df:
         sortProcess(n)
         n += 1
-     
-#EXAMPLE FOR PYPDF2
-##def split(path, name_of_split):
-##    pdf = PdfFileReader(path)
-##    for page in range(pdf.getNumPages()):
-##        pdf_writer = PdfFileWriter()
-##        pdf_writer.addPage(pdf.getPage(page))
-##
-##        output = f'{name_of_split}{page}.pdf'
-##        with open(output, 'wb') as output_pdf:
-##            pdf_writer.write(output_pdf)
-##
-##def extract_information(pdf_path):
-##    with open(pdf_path, 'rb') as f:
-##        pdf = PdfFileReader(f)
-##        information = pdf.getDocumentInfo()
-##        metaData = pdf.getXmpMetadata()
-##        number_of_pages = pdf.getNumPages()
-##
-##    txt = f"""
-##    Information about {pdf_path}:
-##
-##    Author: {information.author}
-##    Creator: {information.creator}
-##    Producer: {information.producer}
-##    Subject: {information.subject}
-##    Title: {information.title}
-##    Number of Pages: {number_of_pages}
-##    """
-##
-##    print(txt)
-##    return information
-##
-
-##
-##if __name__ == '__main__':
-##    path = 'KPFF SPD Tacoma Cost Estimate Info - Copy.pdf'
-##    extract_information(path)
-##    split(path, 'Cost_Sheets')
-

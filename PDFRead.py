@@ -22,12 +22,12 @@ def sortProcess(n):
     with open(pathPDF, 'rb') as pdfFileObj:
         pdf = PdfFileReader(pdfFileObj)
 
-    for page in range(start - 1, end):
-        pdf_writer.addPage(pdf.getPage(page))
+        for page in range(start - 1, end):
+            pdf_writer.addPage(pdf.getPage(page))
 
-    with open(f'{year}_{name}.pdf', 'wb') as output_pdf:
-        pdf_writer.write(output_pdf)
-       
+        with open(f'{year}_{name}.pdf', 'wb') as output_pdf:
+            pdf_writer.write(output_pdf)
+           
 
 #Lines to activate code
 if __name__=='__main__':
@@ -36,5 +36,6 @@ if __name__=='__main__':
     df = pd.read_csv(pathSS)
     
     # if you want to level up this loop check out the apply function in pandas
+    # will look into it! -PY
     for n in range(len(df)):
         sortProcess(n)
